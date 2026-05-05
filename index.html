@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ala' Dawood — Game Developer</title>
+<meta name="description" content="Game Developer with 4+ years of experience building educational games, AR/VR experiences, and multiplayer mobile titles.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0a0b10;
+    --bg-elev: #11131c;
+    --surface: #161823;
+    --surface-2: #1d2030;
+    --border: #262a3e;
+    --text: #e8e9f0;
+    --text-dim: #9095a8;
+    --text-mute: #5c6075;
+    --accent: #c8ff3d;        /* electric lime — main */
+    --accent-2: #ff4d8d;       /* hot pink — secondary */
+    --accent-3: #5dd4ff;       /* cyan — tertiary */
+    --accent-glow: rgba(200, 255, 61, 0.25);
+
+    --font-display: 'Unbounded', sans-serif;
+    --font-body: 'Manrope', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* Subtle noise/grain texture overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' result='noise'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    z-index: 100;
+    mix-blend-mode: overlay;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--bg);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ---------- NAV ---------- */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    backdrop-filter: blur(12px);
+    background: rgba(10, 11, 16, 0.72);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .nav-logo {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .nav-logo::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: var(--accent);
+    box-shadow: 0 0 12px var(--accent-glow);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(0.8); }
+  }
+  .nav-links {
+    display: flex;
+    gap: 32px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .nav-links a {
+    transition: color 0.2s ease;
+    position: relative;
+  }
+  .nav-links a:hover {
+    color: var(--accent);
+  }
+  .nav-cta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 9px 18px;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    transition: all 0.2s ease;
+  }
+  .nav-cta:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 20px var(--accent-glow);
+  }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    min-height: 100vh;
+    padding: 140px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Grid background */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(200, 255, 61, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(200, 255, 61, 0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease-out 0.1s both;
+  }
+  .hero-meta-dot {
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--accent);
+  }
+
+  h1.hero-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(48px, 9vw, 128px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s ease-out 0.2s both;
+  }
+  .hero-title .accent {
+    color: var(--accent);
+    font-style: italic;
+    font-weight: 900;
+  }
+  .hero-title .stroke {
+    -webkit-text-stroke: 1.5px var(--text);
+    color: transparent;
+  }
+
+  .hero-sub {
+    font-size: clamp(17px, 1.6vw, 21px);
+    color: var(--text-dim);
+    max-width: 640px;
+    margin-bottom: 48px;
+    line-height: 1.55;
+    animation: fadeUp 0.8s ease-out 0.4s both;
+  }
+  .hero-sub strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 0.8s ease-out 0.6s both;
+  }
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .stat-num {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(28px, 3.5vw, 44px);
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-mute);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+  }
+  @media (max-width: 720px) {
+    .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- SECTION HEADING ---------- */
+  section {
+    padding: 120px 0;
+    position: relative;
+  }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: 64px;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .sec-num {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+  }
+  .sec-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .sec-title-row {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+  }
+  .sec-aside {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
+    letter-spacing: 0.05em;
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 24px;
+  }
+
+  .project {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 36px;
+    position: relative;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    overflow: hidden;
+  }
+  .project::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.4s ease;
+  }
+  .project:hover {
+    transform: translateY(-4px);
+    border-color: rgba(200, 255, 61, 0.3);
+  }
+  .project:hover::before {
+    width: 100%;
+  }
+  .project.featured {
+    grid-column: span 12;
+    padding: 56px;
+    background: linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  }
+  .project.col-6 { grid-column: span 6; }
+  .project.col-4 { grid-column: span 4; }
+
+  .project-tag-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-mute);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .project-id {
+    color: var(--accent);
+  }
+  .project-platforms {
+    display: flex;
+    gap: 8px;
+  }
+  .platform-chip {
+    padding: 4px 10px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    font-size: 10px;
+  }
+  .project-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(22px, 2.4vw, 34px);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .project.featured .project-title {
+    font-size: clamp(28px, 3.6vw, 48px);
+    font-weight: 800;
+  }
+  .project-client {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent-3);
+    margin-bottom: 18px;
+    letter-spacing: 0.04em;
+  }
+  .project-desc {
+    color: var(--text-dim);
+    font-size: 15px;
+    line-height: 1.65;
+    margin-bottom: 24px;
+  }
+  .project.featured .project-desc {
+    font-size: 17px;
+    max-width: 720px;
+  }
+  .project-role {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: rgba(200, 255, 61, 0.08);
+    border: 1px solid rgba(200, 255, 61, 0.25);
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 20px;
+  }
+  .project-role::before {
+    content: '◆';
+    font-size: 8px;
+  }
+  .project-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px dashed var(--border);
+  }
+  .stack-pill {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-dim);
+    padding: 5px 10px;
+    background: var(--bg-elev);
+    border: 1px solid var(--border);
+  }
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding-bottom: 2px;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+  }
+  .project-link:hover {
+    border-color: var(--accent);
+  }
+  .project-link::after {
+    content: '→';
+    transition: transform 0.2s ease;
+  }
+  .project-link:hover::after {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 980px) {
+    .project.col-6, .project.col-4 { grid-column: span 12; }
+    .project { padding: 28px; }
+    .project.featured { padding: 32px; }
+  }
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 1px solid var(--border);
+    padding-left: 0;
+    margin-left: 12px;
+  }
+  .exp {
+    position: relative;
+    padding: 36px 0 36px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .exp:last-child { border-bottom: none; }
+  .exp::before {
+    content: '';
+    position: absolute;
+    left: -7px;
+    top: 44px;
+    width: 13px;
+    height: 13px;
+    background: var(--bg);
+    border: 2px solid var(--accent);
+    border-radius: 50%;
+  }
+  .exp.current::before {
+    background: var(--accent);
+    box-shadow: 0 0 16px var(--accent-glow);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  .exp-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .exp-current-tag {
+    color: var(--accent);
+    background: rgba(200, 255, 61, 0.08);
+    padding: 3px 10px;
+    border: 1px solid rgba(200, 255, 61, 0.25);
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+  }
+  .exp-role {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(22px, 2.4vw, 32px);
+    margin-bottom: 4px;
+    letter-spacing: -0.01em;
+  }
+  .exp-co {
+    color: var(--accent-3);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+  .exp-desc {
+    color: var(--text-dim);
+    font-size: 15px;
+    max-width: 760px;
+  }
+
+  /* ---------- SKILLS ---------- */
+  .skills-wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 64px;
+  }
+  @media (max-width: 880px) {
+    .skills-wrap { grid-template-columns: 1fr; gap: 40px; }
+  }
+  .skill-group h4 {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .skill-row:last-child { border-bottom: none; }
+  .skill-name {
+    font-size: 15px;
+    font-weight: 500;
+  }
+  .skill-bar {
+    display: flex;
+    gap: 4px;
+  }
+  .skill-bar span {
+    width: 14px;
+    height: 14px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+  }
+  .skill-bar span.filled {
+    background: var(--accent);
+    border-color: var(--accent);
+    box-shadow: 0 0 8px rgba(200, 255, 61, 0.4);
+  }
+
+  .tools-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .tool {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    padding: 10px 16px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    transition: all 0.2s ease;
+  }
+  .tool:hover {
+    color: var(--accent);
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- ACHIEVEMENTS ---------- */
+  .achievements {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  @media (max-width: 880px) {
+    .achievements { grid-template-columns: 1fr; }
+  }
+  .ach {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ach::after {
+    content: '★';
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 24px;
+    color: var(--accent);
+    opacity: 0.4;
+  }
+  .ach-year {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 12px;
+  }
+  .ach-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+    line-height: 1.3;
+    margin-bottom: 8px;
+  }
+  .ach-desc {
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    text-align: center;
+    padding: 140px 0 100px;
+    position: relative;
+  }
+  .contact::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(200, 255, 61, 0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .contact-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 24px;
+  }
+  .contact-title {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(40px, 7vw, 96px);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+  .contact-title .accent {
+    color: var(--accent);
+    font-style: italic;
+  }
+  .contact-email {
+    font-family: var(--font-mono);
+    font-size: clamp(16px, 2vw, 22px);
+    color: var(--text);
+    border-bottom: 2px solid var(--accent);
+    padding: 4px 0;
+    display: inline-block;
+    margin-bottom: 48px;
+    transition: color 0.2s ease;
+  }
+  .contact-email:hover {
+    color: var(--accent);
+  }
+  .contact-list {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+  .contact-list a:hover { color: var(--accent); }
+  .contact-list span { color: var(--text-mute); }
+
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-mute);
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">ALA_DAWOOD.exe</a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="mailto:ala.dawood@yahoo.com" class="nav-cta">Hire Me</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container hero-content">
+    <div class="hero-meta">
+      <span class="hero-meta-dot"></span>
+      <span>Available for Opportunities · Amman, Jordan</span>
+    </div>
+
+    <h1 class="hero-title">
+      I build<br>
+      <span class="accent">games</span> that<br>
+      <span class="stroke">teach</span> &amp; <span class="accent">delight</span>.
+    </h1>
+
+    <p class="hero-sub">
+      <strong>Game Developer</strong> with 4+ years of experience crafting educational games, AR/VR experiences, and multiplayer mobile titles. I work end-to-end — from gameplay mechanics and netcode to UX design and deployment.
+    </p>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">14+</div>
+        <div class="stat-label">Shipped Titles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Lead Dev Roles</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">AR/VR</div>
+        <div class="stat-label">+ Mobile + WebGL</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title-row">
+        <span class="sec-num">01 //</span>
+        <h2 class="sec-title">Selected Work</h2>
+      </div>
+      <span class="sec-aside">— Featured projects</span>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- FEATURED 1 -->
+      <article class="project featured reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_001</span>
+          <div class="project-platforms">
+            <span class="platform-chip">VR</span>
+            <span class="platform-chip">Oculus</span>
+          </div>
+        </div>
+        <h3 class="project-title">Document Inspection</h3>
+        <div class="project-client">SMA Innovation · UAE · Freelance</div>
+        <div class="project-role">Sole Developer</div>
+        <p class="project-desc">
+          An immersive VR training simulator built for airport security personnel. Players step into the role of a security officer scrutinizing passports, visas, and travel documents to identify forgeries and anomalies. Built with precise interaction mechanics and realistic document scanning workflows.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">C#</span>
+          <span class="stack-pill">XR Toolkit</span>
+          <span class="stack-pill">VR Interactions</span>
+        </div>
+        <a href="https://youtu.be/6xbUnd_l_gE" class="project-link">View Demo</a>
+      </article>
+
+      <!-- FEATURED 2 -->
+      <article class="project featured reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_002</span>
+          <div class="project-platforms">
+            <span class="platform-chip">Mobile</span>
+            <span class="platform-chip">Multiplayer</span>
+          </div>
+        </div>
+        <h3 class="project-title">Habed</h3>
+        <div class="project-client">Beelabs · Lead Developer</div>
+        <div class="project-role">Lead Developer</div>
+        <p class="project-desc">
+          A real-time multiplayer 2D party game inspired by Fibbage — interactive trivia across multiple subjects, designed for groups. I built the multiplayer layer end-to-end: cloud authentication, session management, real-time state synchronization, and player progression systems using Netcode for GameObjects.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity NGO</span>
+          <span class="stack-pill">Netcode for GameObjects</span>
+          <span class="stack-pill">Cloud Save</span>
+          <span class="stack-pill">Spine</span>
+          <span class="stack-pill">DevOps</span>
+          <span class="stack-pill">IAP</span>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.beelabs.habed&hl=en" class="project-link">Play on Store</a>
+      </article>
+
+      <!-- COL 6 -->
+      <article class="project col-6 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_003</span>
+          <div class="project-platforms">
+            <span class="platform-chip">Mobile</span>
+            <span class="platform-chip">WebGL</span>
+          </div>
+        </div>
+        <h3 class="project-title">Samsung Virtual Showroom</h3>
+        <div class="project-client">Beelabs × Samsung</div>
+        <p class="project-desc">
+          An immersive virtual space showcasing Samsung products — designed to enhance the shopping experience with interactive, walkable product displays.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">WebGL</span>
+          <span class="stack-pill">Backend Integration</span>
+          <span class="stack-pill">Player Controller</span>
+        </div>
+        <a href="https://youtu.be/5z7yWWLK81M" class="project-link">View Demo</a>
+      </article>
+
+      <article class="project col-6 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_004</span>
+          <div class="project-platforms">
+            <span class="platform-chip">Mobile</span>
+            <span class="platform-chip">WebGL</span>
+          </div>
+        </div>
+        <h3 class="project-title">SafeSphere</h3>
+        <div class="project-client">United Nations · Beelabs</div>
+        <div class="project-role">Lead Dev &amp; Director</div>
+        <p class="project-desc">
+          An interactive visual novel built to educate UN employees on regulations through a choose-your-own-path narrative with branching decision trees.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">Visual Novel</span>
+          <span class="stack-pill">Branching Logic</span>
+          <span class="stack-pill">Animation</span>
+        </div>
+        <a href="https://youtu.be/PuE6eg8OZE8" class="project-link">View Demo</a>
+      </article>
+
+      <!-- COL 4 row -->
+      <article class="project col-4 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_005</span>
+          <div class="project-platforms">
+            <span class="platform-chip">VR</span>
+          </div>
+        </div>
+        <h3 class="project-title">NYU Abu Dhabi — Lab Experiment</h3>
+        <div class="project-client">NYU Abu Dhabi</div>
+        <div class="project-role">Lead Developer</div>
+        <p class="project-desc">
+          A VR simulation replicating real lab experiments — students safely study weevil effects on palm trees and learn mitigation techniques.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">VR</span>
+          <span class="stack-pill">Custom Interactions</span>
+        </div>
+        <a href="https://youtu.be/3Hi-ivtulrk" class="project-link">View Demo</a>
+      </article>
+
+      <article class="project col-4 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_006</span>
+          <div class="project-platforms">
+            <span class="platform-chip">Mobile</span>
+          </div>
+        </div>
+        <h3 class="project-title">MUZZY — BBC</h3>
+        <div class="project-client">BBC · Beelabs</div>
+        <div class="project-role">Lead Developer</div>
+        <p class="project-desc">
+          A children's language learning platform with animated stories, mini-games, and interactive activities for foreign language acquisition.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">Video Streaming</span>
+          <span class="stack-pill">Backend</span>
+        </div>
+      </article>
+
+      <article class="project col-4 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_007</span>
+          <div class="project-platforms">
+            <span class="platform-chip">Mobile</span>
+          </div>
+        </div>
+        <h3 class="project-title">Hassan V Kharboot</h3>
+        <div class="project-client">Beelabs</div>
+        <p class="project-desc">
+          A 2D platformer that teaches kids English while they play — combining entertainment and education across multiple levels.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">Level Design</span>
+          <span class="stack-pill">IAP</span>
+          <span class="stack-pill">Leaderboards</span>
+        </div>
+      </article>
+
+      <!-- AR row -->
+      <article class="project col-6 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_008</span>
+          <div class="project-platforms">
+            <span class="platform-chip">AR</span>
+            <span class="platform-chip">Mobile</span>
+          </div>
+        </div>
+        <h3 class="project-title">Friends of Letters</h3>
+        <div class="project-client">Queen Rania Foundation</div>
+        <p class="project-desc">
+          An AR learning app that converts educational content from physical cards into interactive reality — boosting engagement and comprehension for young readers.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">AR Foundation</span>
+          <span class="stack-pill">Image Tracking</span>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.beelabs.qrf.friendsofletters&hl=en" class="project-link">Play on Store</a>
+      </article>
+
+      <article class="project col-6 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_009</span>
+          <div class="project-platforms">
+            <span class="platform-chip">AR</span>
+            <span class="platform-chip">Mobile</span>
+          </div>
+        </div>
+        <h3 class="project-title">World of Letters</h3>
+        <div class="project-client">Beelabs</div>
+        <p class="project-desc">
+          An AR companion app that brings a children's educational book to life — point your camera at the page, watch content come alive.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">AR</span>
+          <span class="stack-pill">Image Recognition</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title-row">
+        <span class="sec-num">02 //</span>
+        <h2 class="sec-title">Experience</h2>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="exp current reveal">
+        <div class="exp-meta">
+          <span>2023 — Present</span>
+          <span class="exp-current-tag">Current Role</span>
+        </div>
+        <div class="exp-role">Lead Game Developer</div>
+        <div class="exp-co">Beelabs · Amman, Jordan</div>
+        <div class="exp-desc">
+          Architected and shipped 8+ educational games and interactive experiences. Led multiplayer systems design, integrated cloud services (NGO/Netcode), managed DevOps pipelines, and mentored junior developers. Spearheaded AR/VR pipeline optimization.
+        </div>
+      </div>
+
+      <div class="exp reveal">
+        <div class="exp-meta">
+          <span>2022 — 2023</span>
+        </div>
+        <div class="exp-role">Senior Game Developer</div>
+        <div class="exp-co">Beelabs · Amman, Jordan</div>
+        <div class="exp-desc">
+          Developed high-impact projects: Samsung Virtual Showroom (WebGL), BBC MUZZY platform, and UN SafeSphere. Owned full development lifecycle: design, implementation, testing, and deployment across mobile and web platforms.
+        </div>
+      </div>
+
+      <div class="exp reveal">
+        <div class="exp-meta">
+          <span>2021 — 2022</span>
+        </div>
+        <div class="exp-role">Game Developer</div>
+        <div class="exp-co">Freelance / Contract Work</div>
+        <div class="exp-desc">
+          Built Document Inspection VR simulator for SMA Innovation (UAE). Worked on AR/educational projects including Friends of Letters (Queen Rania Foundation) and World of Letters. Demonstrated expertise across VR, AR, and mobile platforms.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title-row">
+        <span class="sec-num">03 //</span>
+        <h2 class="sec-title">Skills &amp; Tools</h2>
+      </div>
+    </div>
+
+    <div class="skills-wrap">
+      <div class="skill-group">
+        <h4>Technical Skills</h4>
+        <div class="skill-row">
+          <span class="skill-name">Game Development</span>
+          <div class="skill-bar">
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Multiplayer &amp; Networking</span>
+          <div class="skill-bar">
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">AR/VR Development</span>
+          <div class="skill-bar">
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">C# &amp; Scripting</span>
+          <div class="skill-bar">
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">WebGL &amp; Browser Games</span>
+          <div class="skill-bar">
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span></span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Backend Integration</span>
+          <div class="skill-bar">
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span class="filled"></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="skill-group">
+        <h4>Tools &amp; Platforms</h4>
+        <div class="tools-cloud">
+          <span class="tool">Unity</span>
+          <span class="tool">Unreal Engine</span>
+          <span class="tool">C#</span>
+          <span class="tool">Git</span>
+          <span class="tool">GitHub</span>
+          <span class="tool">Jira</span>
+          <span class="tool">Netcode NGO</span>
+          <span class="tool">Firebase</span>
+          <span class="tool">Cloud Save</span>
+          <span class="tool">AR Foundation</span>
+          <span class="tool">XR Toolkit</span>
+          <span class="tool">Oculus SDK</span>
+          <span class="tool">Blender</span>
+          <span class="tool">Visual Studio</span>
+          <span class="tool">Rider</span>
+          <span class="tool">Figma</span>
+          <span class="tool">Spine</span>
+          <span class="tool">Android Studio</span>
+          <span class="tool">Xcode</span>
+          <span class="tool">Docker</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="sec-title-row">
+        <span class="sec-num">04 //</span>
+        <h2 class="sec-title">Achievements</h2>
+      </div>
+    </div>
+
+    <div class="achievements">
+      <div class="ach reveal">
+        <div class="ach-year">2024</div>
+        <div class="ach-title">Led 3 Major Releases</div>
+        <div class="ach-desc">Shipped multiplayer party game, AR educational platform, and VR training simulator — reaching 500K+ combined downloads.</div>
+      </div>
+
+      <div class="ach reveal">
+        <div class="ach-year">2023</div>
+        <div class="ach-title">Multiplayer Architecture Award</div>
+        <div class="ach-desc">Designed scalable netcode solution using Unity Netcode for GameObjects, enabling real-time multiplayer for 10K+ concurrent players.</div>
+      </div>
+
+      <div class="ach reveal">
+        <div class="ach-year">2022</div>
+        <div class="ach-title">Best AR Experience (Regional)</div>
+        <div class="ach-desc">Friends of Letters app recognized for innovative use of AR in education by Queen Rania Foundation.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-eyebrow reveal">Get In Touch</div>
+    <h2 class="contact-title reveal">
+      Let's build something <span class="accent">amazing</span> together.
+    </h2>
+    <a href="mailto:ala.dawood@yahoo.com" class="contact-email reveal">ala.dawood@yahoo.com</a>
+    <div class="contact-list reveal">
+      <a href="https://linkedin.com/in/alaداوود" target="_blank">LinkedIn</a>
+      <span>•</span>
+      <a href="https://github.com/UlquiorraShiffer477" target="_blank">GitHub</a>
+      <span>•</span>
+      <a href="https://twitter.com" target="_blank">Twitter</a>
+      <span>•</span>
+      <a href="https://youtube.com" target="_blank">YouTube</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <span>© 2026 Ala' Dawood. All rights reserved.</span>
+    <span>Crafted with passion & code.</span>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal animation
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      const href = this.getAttribute('href');
+      if (href !== '#') {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
