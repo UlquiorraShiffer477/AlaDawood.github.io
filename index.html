@@ -57,7 +57,7 @@
     position: fixed;
     inset: 0;
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' result='noise'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
     opacity: 0.03;
     z-index: 100;
     mix-blend-mode: overlay;
@@ -764,7 +764,7 @@
     </h1>
 
     <p class="hero-sub">
-      <strong>Game Developer</strong> with 4+ years of experience crafting educational games, AR/VR experiences, and multiplayer mobile titles. I work end-to-end — from gameplay mechanics and netcode to UX design and deployment.
+      <strong>Game Developer</strong> with 4+ years of experience crafting educational games, AR/VR experiences, and multiplayer mobile titles. I work end-to-end — from gameplay mechanics and netcode to publishing on iOS &amp; Android.
     </p>
 
     <div class="hero-stats">
@@ -796,7 +796,7 @@
         <span class="sec-num">01 //</span>
         <h2 class="sec-title">Selected Work</h2>
       </div>
-      <span class="sec-aside">— Featured projects</span>
+      <span class="sec-aside">— Add live links once available</span>
     </div>
 
     <div class="projects-grid">
@@ -814,7 +814,7 @@
         <div class="project-client">SMA Innovation · UAE · Freelance</div>
         <div class="project-role">Sole Developer</div>
         <p class="project-desc">
-          An immersive VR training simulator built for airport security personnel. Players step into the role of a security officer scrutinizing passports, visas, and travel documents to identify forgeries and anomalies. Built with precise interaction mechanics and realistic document scanning workflows.
+          An immersive VR training simulator built for airport security personnel. Players step into the role of a security officer scrutinizing passports, visas, and travel documents to identify forgeries. Designed to deliver high-stakes training in a safe, repeatable environment.
         </p>
         <div class="project-stack">
           <span class="stack-pill">Unity</span>
@@ -822,7 +822,8 @@
           <span class="stack-pill">XR Toolkit</span>
           <span class="stack-pill">VR Interactions</span>
         </div>
-        <a href="https://youtu.be/6xbUnd_l_gE" class="project-link">View Demo</a>
+        <!-- Replace with real link when available -->
+        <a href="https://youtu.be/6xbUnd_l_gE" class="project-link">Request demo / video</a>
       </article>
 
       <!-- FEATURED 2 -->
@@ -838,7 +839,7 @@
         <div class="project-client">Beelabs · Lead Developer</div>
         <div class="project-role">Lead Developer</div>
         <p class="project-desc">
-          A real-time multiplayer 2D party game inspired by Fibbage — interactive trivia across multiple subjects, designed for groups. I built the multiplayer layer end-to-end: cloud authentication, session management, real-time state synchronization, and player progression systems using Netcode for GameObjects.
+          A real-time multiplayer 2D party game inspired by Fibbage — interactive trivia across multiple subjects, designed for groups. I built the multiplayer layer end-to-end: cloud authentication, save sync, networking, and IAP.
         </p>
         <div class="project-stack">
           <span class="stack-pill">Unity NGO</span>
@@ -848,7 +849,7 @@
           <span class="stack-pill">DevOps</span>
           <span class="stack-pill">IAP</span>
         </div>
-        <a href="https://play.google.com/store/apps/details?id=com.beelabs.habed&hl=en" class="project-link">Play on Store</a>
+        <a href="https://play.google.com/store/apps/details?id=com.beelabs.habed&hl=en" class="project-link">Add store link</a>
       </article>
 
       <!-- COL 6 -->
@@ -871,7 +872,7 @@
           <span class="stack-pill">Backend Integration</span>
           <span class="stack-pill">Player Controller</span>
         </div>
-        <a href="https://youtu.be/5z7yWWLK81M" class="project-link">View Demo</a>
+        <a href="https://youtu.be/5z7yWWLK81M" class="project-link">Add store link</a>
       </article>
 
       <article class="project col-6 reveal">
@@ -894,7 +895,7 @@
           <span class="stack-pill">Branching Logic</span>
           <span class="stack-pill">Animation</span>
         </div>
-        <a href="https://youtu.be/PuE6eg8OZE8" class="project-link">View Demo</a>
+        <a href="https://youtu.be/PuE6eg8OZE8" class="project-link">Add store link</a>
       </article>
 
       <!-- COL 4 row -->
@@ -916,7 +917,7 @@
           <span class="stack-pill">VR</span>
           <span class="stack-pill">Custom Interactions</span>
         </div>
-        <a href="https://youtu.be/3Hi-ivtulrk" class="project-link">View Demo</a>
+        <a href="https://youtu.be/3Hi-ivtulrk" class="project-link">Add store link</a>
       </article>
 
       <article class="project col-4 reveal">
@@ -978,7 +979,7 @@
           <span class="stack-pill">AR Foundation</span>
           <span class="stack-pill">Image Tracking</span>
         </div>
-        <a href="https://play.google.com/store/apps/details?id=com.beelabs.qrf.friendsofletters&hl=en" class="project-link">Play on Store</a>
+        <a href="https://play.google.com/store/apps/details?id=com.beelabs.qrf.friendsofletters&hl=en" class="project-link">Add store link</a>
       </article>
 
       <article class="project col-6 reveal">
@@ -997,10 +998,93 @@
         <div class="project-stack">
           <span class="stack-pill">Unity</span>
           <span class="stack-pill">AR</span>
-          <span class="stack-pill">Image Recognition</span>
+          <span class="stack-pill">Publishing</span>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.worldofletters.ae&hl=en" class="project-link">Add store link</a>
+      </article>
+
+      <!-- Smaller row -->
+      <article class="project col-4 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_010</span>
+          <div class="project-platforms">
+            <span class="platform-chip">Mobile</span>
+            <span class="platform-chip">WebGL</span>
+          </div>
+        </div>
+        <h3 class="project-title">Basmati</h3>
+        <div class="project-client">Beelabs</div>
+        <p class="project-desc">
+          A school-themed collection of educational mini-games for children — each subject reimagined as a playable experience.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">Mini-games</span>
+          <span class="stack-pill">UI</span>
+        </div>
+        <a href="https://youtu.be/1UUhBzf4jic" class="project-link">Add store link</a>
+      </article>
+
+      <article class="project col-4 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_011</span>
+          <div class="project-platforms">
+            <span class="platform-chip">Mobile</span>
+          </div>
+        </div>
+        <h3 class="project-title">Carrom</h3>
+        <div class="project-client">Chickmania Entertainment</div>
+        <p class="project-desc">
+          Built a comprehensive player onboarding system and refactored the legacy codebase, resolving inefficiencies and improving stability.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">Onboarding</span>
+          <span class="stack-pill">Refactoring</span>
+        </div>
+        <a href="https://play.google.com/store/apps/details?id=com.ChickMania.Carrom&hl=en" class="project-link">Add store link</a>
+      </article>
+
+      <article class="project col-4 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_012</span>
+          <div class="project-platforms">
+            <span class="platform-chip">Mobile</span>
+          </div>
+        </div>
+        <h3 class="project-title">Garage System (Racing)</h3>
+        <div class="project-client">Chickmania Entertainment</div>
+        <p class="project-desc">
+          Designed and implemented a full vehicle garage system — advanced customization, asset loading, and inventory management.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">System Design</span>
+          <span class="stack-pill">Asset Management</span>
         </div>
       </article>
 
+      <!-- Personal -->
+      <article class="project col-6 reveal">
+        <div class="project-tag-row">
+          <span class="project-id">PROJECT_013 // PERSONAL</span>
+          <div class="project-platforms">
+            <span class="platform-chip">PC</span>
+            <span class="platform-chip">2D</span>
+          </div>
+        </div>
+        <h3 class="project-title">Shinigami Samurai</h3>
+        <div class="project-client">Graduation Project</div>
+        <p class="project-desc">
+          A 2D pixel-art platformer built from scratch — combat system, level design, animation, and pixel art produced solo as my software engineering capstone.
+        </p>
+        <div class="project-stack">
+          <span class="stack-pill">Unity</span>
+          <span class="stack-pill">Pixel Art</span>
+          <span class="stack-pill">Combat System</span>
+          <span class="stack-pill">Solo Project</span>
+        </div>
+      </article>
     </div>
   </div>
 </section>
@@ -1013,41 +1097,42 @@
         <span class="sec-num">02 //</span>
         <h2 class="sec-title">Experience</h2>
       </div>
+      <span class="sec-aside">2021 — Present</span>
     </div>
 
     <div class="timeline">
       <div class="exp current reveal">
         <div class="exp-meta">
-          <span>2023 — Present</span>
+          <span>JUL 2024 — PRESENT · AMMAN, JORDAN</span>
           <span class="exp-current-tag">Current Role</span>
         </div>
-        <div class="exp-role">Lead Game Developer</div>
-        <div class="exp-co">Beelabs · Amman, Jordan</div>
-        <div class="exp-desc">
-          Architected and shipped 8+ educational games and interactive experiences. Led multiplayer systems design, integrated cloud services (NGO/Netcode), managed DevOps pipelines, and mentored junior developers. Spearheaded AR/VR pipeline optimization.
-        </div>
+        <h3 class="exp-role">Game Developer</h3>
+        <div class="exp-co">// Chickmania Entertainment</div>
+        <p class="exp-desc">
+          Designing and implementing user onboarding features to drive engagement, plus custom game mechanics for mid-core iOS &amp; Android titles. Translating design ideas into shippable code, debugging across platforms, and supporting live apps in production.
+        </p>
       </div>
 
       <div class="exp reveal">
         <div class="exp-meta">
-          <span>2022 — 2023</span>
+          <span>JAN 2021 — JUL 2024 · AMMAN, JORDAN</span>
         </div>
-        <div class="exp-role">Senior Game Developer</div>
-        <div class="exp-co">Beelabs · Amman, Jordan</div>
-        <div class="exp-desc">
-          Developed high-impact projects: Samsung Virtual Showroom (WebGL), BBC MUZZY platform, and UN SafeSphere. Owned full development lifecycle: design, implementation, testing, and deployment across mobile and web platforms.
-        </div>
+        <h3 class="exp-role">Game Developer</h3>
+        <div class="exp-co">// Beelabs</div>
+        <p class="exp-desc">
+          Owned core gameplay mechanics, control systems, and feature delivery for multilingual mobile games and edutainment apps. Collaborated cross-functionally with animation, modeling, backend, and level design teams. Published titles on iOS &amp; Android, managed store presence, and ran direct client communication.
+        </p>
       </div>
 
       <div class="exp reveal">
         <div class="exp-meta">
-          <span>2021 — 2022</span>
+          <span>FREELANCE · UAE</span>
         </div>
-        <div class="exp-role">Game Developer</div>
-        <div class="exp-co">Freelance / Contract Work</div>
-        <div class="exp-desc">
-          Built Document Inspection VR simulator for SMA Innovation (UAE). Worked on AR/educational projects including Friends of Letters (Queen Rania Foundation) and World of Letters. Demonstrated expertise across VR, AR, and mobile platforms.
-        </div>
+        <h3 class="exp-role">Freelance Game Developer</h3>
+        <div class="exp-co">// SMA Innovation</div>
+        <p class="exp-desc">
+          Built Document Inspection — a VR training simulator for airport security personnel. End-to-end ownership: design, implementation, interactions, and delivery.
+        </p>
       </div>
     </div>
   </div>
@@ -1059,98 +1144,99 @@
     <div class="sec-head reveal">
       <div class="sec-title-row">
         <span class="sec-num">03 //</span>
-        <h2 class="sec-title">Skills &amp; Tools</h2>
+        <h2 class="sec-title">Toolkit</h2>
       </div>
     </div>
 
     <div class="skills-wrap">
-      <div class="skill-group">
-        <h4>Technical Skills</h4>
+      <div class="skill-group reveal">
+        <h4>Core Skills</h4>
         <div class="skill-row">
-          <span class="skill-name">Game Development</span>
+          <span class="skill-name">Unity Engine</span>
           <div class="skill-bar">
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span>
           </div>
         </div>
         <div class="skill-row">
-          <span class="skill-name">Multiplayer &amp; Networking</span>
+          <span class="skill-name">C# Programming</span>
           <div class="skill-bar">
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span></span>
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span>
           </div>
         </div>
         <div class="skill-row">
-          <span class="skill-name">AR/VR Development</span>
+          <span class="skill-name">Educational Games</span>
           <div class="skill-bar">
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span></span>
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span>
           </div>
         </div>
         <div class="skill-row">
-          <span class="skill-name">C# &amp; Scripting</span>
+          <span class="skill-name">Game Mechanics &amp; Level Design</span>
           <div class="skill-bar">
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span>
           </div>
         </div>
         <div class="skill-row">
-          <span class="skill-name">WebGL &amp; Browser Games</span>
+          <span class="skill-name">Multiplayer (Netcode for GameObjects)</span>
           <div class="skill-bar">
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span></span>
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span>
           </div>
         </div>
         <div class="skill-row">
-          <span class="skill-name">Backend Integration</span>
+          <span class="skill-name">Virtual Reality (VR)</span>
           <div class="skill-bar">
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span class="filled"></span>
-            <span></span>
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">Augmented Reality (AR)</span>
+          <div class="skill-bar">
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span>
+          </div>
+        </div>
+        <div class="skill-row">
+          <span class="skill-name">C++ Programming</span>
+          <div class="skill-bar">
+            <span class="filled"></span><span class="filled"></span><span class="filled"></span><span></span><span></span>
           </div>
         </div>
       </div>
 
-      <div class="skill-group">
+      <div class="skill-group reveal">
         <h4>Tools &amp; Platforms</h4>
         <div class="tools-cloud">
           <span class="tool">Unity</span>
-          <span class="tool">Unreal Engine</span>
           <span class="tool">C#</span>
-          <span class="tool">Git</span>
-          <span class="tool">GitHub</span>
-          <span class="tool">Jira</span>
-          <span class="tool">Netcode NGO</span>
-          <span class="tool">Firebase</span>
-          <span class="tool">Cloud Save</span>
-          <span class="tool">AR Foundation</span>
-          <span class="tool">XR Toolkit</span>
-          <span class="tool">Oculus SDK</span>
-          <span class="tool">Blender</span>
-          <span class="tool">Visual Studio</span>
-          <span class="tool">Rider</span>
-          <span class="tool">Figma</span>
+          <span class="tool">C++</span>
+          <span class="tool">NGO Netcode</span>
           <span class="tool">Spine</span>
-          <span class="tool">Android Studio</span>
-          <span class="tool">Xcode</span>
-          <span class="tool">Docker</span>
+          <span class="tool">XR Toolkit</span>
+          <span class="tool">AR Foundation</span>
+          <span class="tool">WebGL Build</span>
+          <span class="tool">iOS Publishing</span>
+          <span class="tool">Android Publishing</span>
+          <span class="tool">IAP</span>
+          <span class="tool">Cloud Save</span>
+          <span class="tool">Authentication</span>
+          <span class="tool">Backend Integration</span>
+          <span class="tool">Git</span>
+          <span class="tool">DevOps</span>
+        </div>
+
+        <h4 style="margin-top: 40px;">Soft Skills</h4>
+        <div class="tools-cloud">
+          <span class="tool">Leadership</span>
+          <span class="tool">Project Management</span>
+          <span class="tool">Cross-functional Collab</span>
+          <span class="tool">Critical Thinking</span>
+          <span class="tool">Adaptability</span>
+          <span class="tool">Attention to Detail</span>
+          <span class="tool">Client Communication</span>
+        </div>
+
+        <h4 style="margin-top: 40px;">Languages</h4>
+        <div class="tools-cloud">
+          <span class="tool">Arabic — Native</span>
+          <span class="tool">English — Professional</span>
         </div>
       </div>
     </div>
@@ -1163,27 +1249,25 @@
     <div class="sec-head reveal">
       <div class="sec-title-row">
         <span class="sec-num">04 //</span>
-        <h2 class="sec-title">Achievements</h2>
+        <h2 class="sec-title">Industry &amp; Events</h2>
       </div>
     </div>
 
     <div class="achievements">
       <div class="ach reveal">
         <div class="ach-year">2024</div>
-        <div class="ach-title">Led 3 Major Releases</div>
-        <div class="ach-desc">Shipped multiplayer party game, AR educational platform, and VR training simulator — reaching 500K+ combined downloads.</div>
+        <h3 class="ach-title">Pocket Gamer Connects</h3>
+        <p class="ach-desc">Represented Chickmania Entertainment at one of the region's premier mobile gaming conferences in Jordan.</p>
       </div>
-
-      <div class="ach reveal">
-        <div class="ach-year">2023</div>
-        <div class="ach-title">Multiplayer Architecture Award</div>
-        <div class="ach-desc">Designed scalable netcode solution using Unity Netcode for GameObjects, enabling real-time multiplayer for 10K+ concurrent players.</div>
-      </div>
-
       <div class="ach reveal">
         <div class="ach-year">2022</div>
-        <div class="ach-title">Best AR Experience (Regional)</div>
-        <div class="ach-desc">Friends of Letters app recognized for innovative use of AR in education by Queen Rania Foundation.</div>
+        <h3 class="ach-title">Pocket Gamer Connects</h3>
+        <p class="ach-desc">Represented Beelabs — networking with international studios and showcasing portfolio work.</p>
+      </div>
+      <div class="ach reveal">
+        <div class="ach-year">EVENT</div>
+        <h3 class="ach-title">Madrasati Job Fair</h3>
+        <p class="ach-desc">Engaged graduates and professionals on behalf of Beelabs — interviewing, networking, and promoting our titles.</p>
       </div>
     </div>
   </div>
@@ -1192,60 +1276,42 @@
 <!-- CONTACT -->
 <section class="contact" id="contact">
   <div class="container">
-    <div class="contact-eyebrow reveal">Get In Touch</div>
-    <h2 class="contact-title reveal">
-      Let's build something <span class="accent">amazing</span> together.
-    </h2>
-    <a href="mailto:ala.dawood@yahoo.com" class="contact-email reveal">ala.dawood@yahoo.com</a>
-    <div class="contact-list reveal">
-      <a href="https://linkedin.com/in/alaداوود" target="_blank">LinkedIn</a>
-      <span>•</span>
-      <a href="https://github.com/UlquiorraShiffer477" target="_blank">GitHub</a>
-      <span>•</span>
-      <a href="https://twitter.com" target="_blank">Twitter</a>
-      <span>•</span>
-      <a href="https://youtube.com" target="_blank">YouTube</a>
+    <div class="reveal">
+      <div class="contact-eyebrow">// Press Start to Continue</div>
+      <h2 class="contact-title">Let's <span class="accent">build</span><br>something new.</h2>
+      <a href="mailto:ala.dawood@yahoo.com" class="contact-email">ala.dawood@yahoo.com</a>
+      <div class="contact-list">
+        <a href="tel:+962797428442">+962 79 742 8442</a>
+        <span>·</span>
+        <a href="https://linkedin.com/in/ala-dawood-162bb0215" target="_blank" rel="noopener">LinkedIn</a>
+        <span>·</span>
+        <span>Amman, Jordan</span>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="container footer-inner">
-    <span>© 2026 Ala' Dawood. All rights reserved.</span>
-    <span>Crafted with passion & code.</span>
+  <div class="container">
+    <div class="footer-inner">
+      <span>© 2026 Ala' Dawood. Built with Unity, coffee, &amp; HTML.</span>
+      <span>v1.0.0 · Last updated: May 2026</span>
+    </div>
   </div>
 </footer>
 
 <script>
-  // Scroll reveal animation
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  };
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+  // Reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
       }
     });
-  }, observerOptions);
-
-  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-  // Smooth scroll for nav links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const href = this.getAttribute('href');
-      if (href !== '#') {
-        e.preventDefault();
-        const target = document.querySelector(href);
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    });
-  });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
+
 </body>
 </html>
